@@ -5,36 +5,46 @@ int main() {
     char nombre[50];
     int edad;
 
-    printf("===============================\n");
-    printf(" SISTEMA DE REGISTRO DE ESTUDIANTES\n");
-    printf("===============================\n");
+    printf("\n====================================\n");
+    printf("   SISTEMA DE REGISTRO DE ESTUDIANTES\n");
+    printf("====================================\n");
 
-    printf("1. Registrar estudiante\n");
+    printf("\n1. Registrar estudiante\n");
     printf("2. Consultar estudiantes\n");
     printf("3. Salir\n");
 
     printf("\nSelecciona una opcion: ");
-    scanf("%d", &opcion);
+
+    if (scanf("%d", &opcion) != 1) {
+        printf("\nError: debes ingresar un numero.\n");
+        return 1;
+    }
 
     if (opcion == 1) {
+        printf("\n--- REGISTRO DE ESTUDIANTE ---\n");
+
         printf("Ingresa el nombre: ");
         scanf(" %49[^\n]", nombre);
 
         printf("Ingresa la edad: ");
-        scanf("%d", &edad);
 
-        printf("\nEstudiante registrado:\n");
+        if (scanf("%d", &edad) != 1 || edad < 0) {
+            printf("Edad no valida.\n");
+            return 1;
+        }
+
+        printf("\nEstudiante registrado correctamente.\n");
         printf("Nombre: %s\n", nombre);
         printf("Edad: %d\n", edad);
     }
     else if (opcion == 2) {
-        printf("Todavia no hay estudiantes registrados.\n");
+        printf("\nNo hay estudiantes guardados.\n");
     }
     else if (opcion == 3) {
-        printf("Hasta pronto.\n");
+        printf("\nGracias por utilizar el sistema.\n");
     }
     else {
-        printf("Opcion no valida.\n");
+        printf("\nOpcion no valida. Intenta nuevamente.\n");
     }
 
     return 0;
